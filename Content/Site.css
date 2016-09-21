@@ -22,3 +22,11 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.cursor {
+    cursor: pointer;
+}
+
+.small{
+    font-size: 0.7em;
+}

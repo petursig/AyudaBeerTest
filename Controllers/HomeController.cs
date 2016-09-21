@@ -11,7 +11,7 @@ namespace AyudaTestProject.Controllers
     {
         public ActionResult Index()
         {
-            SelectorModel model = new SelectorModel();
+            BeerGoogles model = BeerGoogles.Singleton;
 
             return View(model);
         }
