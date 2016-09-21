@@ -1,4 +1,6 @@
 ﻿using AyudaTestProject.Models;
+using Newtonsoft.Json.Linq;
+using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,11 +18,11 @@ namespace AyudaTestProject.Controllers
             return View(model);
         }
 
-        public ActionResult About()
+        public PartialViewResult Results(string styleId, string seasonId, string glasswareId, bool isOrganic, bool isLabel)
         {
-            ViewBag.Message = "Your application description page.";
+            BeerSearch model = new BeerSearch(styleId, seasonId, glasswareId, isOrganic, isLabel);
 
-            return View();
+            return PartialView(model);
         }
 
         public ActionResult Contact()

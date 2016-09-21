@@ -3,10 +3,10 @@
 @{
     ViewBag.Title = "Home Page";
 }
+<h1>Find your favorite beer!!!</h1>
 
-<div class="jumbotron">
-    <h1>Find your favorite beer!!!</h1>
-
+<div class="jumbotron" id="PickStyle">
+    <h2>Pick a style!</h2>
     <ul>
     @foreach (Category c in Model.Categories)
     {
@@ -22,7 +22,7 @@
                         <div class="small" style="display: none;">
                             @bs.description
                             <br />
-                            <span class="btn btn-primary">Choose</span>
+                            <span class="btn btn-primary" onclick="BeerPicker.SetStyle('@bs.id', '@bs.name');" >Choose</span>
                         </div>
                     </li>
                 }
@@ -30,37 +30,70 @@
         </li>
     }
     </ul>
-
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
 </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
+<div class="jumbotron" id="PickSeason">
+    <h2>Pick your favorite season!</h2>
+    <ul>
+        @foreach(BeerSeason season in Model.BeerSeasons)
+        {
+            <li>
+                <span class="cursor" onclick="$(this).siblings('div').slideToggle();">@season.name</span>
+                <div class="small" style="display: none;">
+                    @season.description
+                    <br />
+                    <span class="btn btn-primary" onclick="BeerPicker.SetSeason('@season.id', '@season.name');">Choose</span>
+                </div>
+            </li>
+        }
+    </ul>
 </div>
+
+<div class="jumbotron" id="pickGlassware">
+    <h2>Pick your favorite glassware!</h2>
+    <ul>
+        @foreach (GlassWare glass in Model.Glasswares)
+        {
+            <li>
+                <span class="btn btn-primary" onclick="BeerPicker.SetGlassware('@glass.id', '@glass.name')">@glass.name</span>
+            </li>
+        }
+    </ul>
+</div>
+
+<div class="jumbotron" id="pickOrganic">
+    <h2>Do you prefer it organic?</h2>
+    <ul>
+        <li>
+            <span class="btn btn-primary" onclick="BeerPicker.SetOrganic(true);" >YES</span>
+        </li>
+
+        <li>
+            <span class="btn btn-primary" onclick="BeerPicker.SetOrganic(false);" >NO</span>
+        </li>
+    </ul>
+</div>
+
+<div class="jumbotron" id="pickLabel">
+    <h2>Should it have a label?</h2>
+    <ul>
+        <li>
+            <span class="btn btn-primary" onclick="BeerPicker.SetLabel(true);">YES</span>
+        </li>
+
+        <li>
+            <span class="btn btn-primary" onclick="BeerPicker.SetLabel(false);">NO</span>
+        </li>
+    </ul>
+</div>
+
+
+<div id="SearchResults" style="display: none;">
+
+</div>
+
 
 @section scripts{
     <script type="text/javascript">
-        $(document).ready(function () {
-            $('[data-toggle="popover"]').popover()
-        });
     </script>
 }

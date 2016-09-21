@@ -1,0 +1,33 @@
+﻿@model AyudaTestProject.Models.BeerSearch
+@using AyudaTestProject.Models
+
+@{
+    Layout = null;
+}
+
+@if (Model.result.Count == 0)
+{
+    <div class="warning">No Results Founds... Sorry!</div>
+}
+else
+{ 
+
+    <hr />
+    
+    <h1>You should like one of these!!!!</h1>
+    
+    foreach (Beer b in Model.result)
+    {
+        <div class="row" style="border-bottom: 1px solid black;">
+            <h2>@b.name</h2>
+            @if (b.label != null)
+            {
+                    <img align="right" src="@b.label" />
+            }
+            <span>
+                @b.description
+            </span>
+        </div>
+    }
+    
+}

@@ -16,13 +16,16 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Find your favorite beer!", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li><a class="cursor" id="pickedStyle" onclick="BeerPicker.ScrollTo($('#PickStyle'));"></a></li>
+                    <li><a class="cursor" id="pickedSeason" onclick="BeerPicker.ScrollTo($('#PickSeason'));"></a></li>
+                    <li><a class="cursor" id="pickedGlassware" onclick="BeerPicker.ScrollTo($('#pickGlassware'));"></a></li>
+                    <li><a class="cursor" id="pickedOrganic" onclick="BeerPicker.ScrollTo($('#pickOrganic'));"></a></li>
+                    <li><a class="cursor" id="pickedLabel" onclick="BeerPicker.ScrollTo($('#pickLabel'));"></a></li>
+                    <li><a id="Go" class="btn btn-success" onclick="BeerPicker.GO();" style="display: none; color: white; font-weight: bold; font-size: 1.2em;"> GO! </a></li>
                 </ul>
             </div>
         </div>
