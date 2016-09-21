@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AyudaTestProject.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,7 +11,9 @@ namespace AyudaTestProject.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            SelectorModel model = new SelectorModel();
+
+            return View(model);
         }
 
         public ActionResult About()
